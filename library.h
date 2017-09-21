@@ -26,22 +26,29 @@ struct is_nucleic_acid<RNA>{
 enum class AA : unsigned char { A, R, N, D, C, Q, E, G, H, I, L, K, M, F, P, S, T, W, Y, V, O, U, B, J, Z, X, Term, Gap };
 
 // Test if `nt` is surely either guanine or cytosine.
-bool isGC(DNA nt);
+template <typename NucleicAcid>
+bool isGC(NucleicAcid nt);
 
 // Test if `nt` is surely a purine.
-bool ispurine(DNA nt);
+template <typename NucleicAcid>
+bool ispurine(NucleicAcid nt);
 
 // Test if `nt` is surely a pyrimidine.
-bool ispyrimidine(DNA nt);
+template <typename NucleicAcid>
+bool ispyrimidine(NucleicAcid nt);
 
 // Test if `nt` represents an ambiguity symbol.
-bool isambiguous(DNA nt);
+template <typename NucleicAcid>
+bool isambiguous(NucleicAcid nt);
 
 // Test if `nt` represents a certainly known nucleotide.
-bool iscertain(DNA nt);
+template <typename NucleicAcid>
+bool iscertain(NucleicAcid nt);
 
 // Test if `nt` is a symbol representing a gap.
-bool isgap(DNA nt);
+template <typename NucleicAcid>
+bool isgap(NucleicAcid nt);
 
+int popcount(unsigned char b);
 
 #endif

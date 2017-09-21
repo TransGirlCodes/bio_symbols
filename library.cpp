@@ -86,9 +86,16 @@ end
 end
 */
 
+int popcount(unsigned char b){
+    b = b - ((b >> static_cast<unsigned char>(1)) & static_cast<unsigned char>(0x55));
+    b = (b & static_cast<unsigned char>(0x33)) + ((b >> static_cast<unsigned char>(2)) & static_cast<unsigned char>(0x33));
+    return (((b + (b >> 4)) & 0x0F) * 0x01);
+}
+
 // Test if `x` and `y` are compatible with each other (i.e. `x` and `y` can be the same symbol).
 template <typename NucleicAcid>
 bool iscompatible(NucleicAcid x, NucleicAcid y){
+    static_assert(is_nucleic_acid<NucleicAcid>::value, "Values are not nucleic acids");
     using UT = typename std::underlying_type<NucleicAcid>::type;
     return (static_cast<UT>(x) & static_cast<UT>(y)) != 0;
 }
