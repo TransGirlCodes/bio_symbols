@@ -1,5 +1,5 @@
-#ifndef BIOSYMBOLS_LIBRARY_H
-#define BIOSYMBOLS_LIBRARY_H
+#ifndef BIO_SYMBOLS_LIBRARY_H
+#define BIO_SYMBOLS_LIBRARY_H
 
 template<typename T>
 struct is_nucleic_acid{
@@ -27,28 +27,32 @@ enum class AA : unsigned char { A, R, N, D, C, Q, E, G, H, I, L, K, M, F, P, S, 
 
 // Test if `nt` is surely either guanine or cytosine.
 template <typename NucleicAcid>
-bool isGC(NucleicAcid nt);
+bool is_GC(NucleicAcid nt);
 
 // Test if `nt` is surely a purine.
 template <typename NucleicAcid>
-bool ispurine(NucleicAcid nt);
+bool is_purine(NucleicAcid nt);
 
 // Test if `nt` is surely a pyrimidine.
 template <typename NucleicAcid>
-bool ispyrimidine(NucleicAcid nt);
+bool is_pyrimidine(NucleicAcid nt);
 
 // Test if `nt` represents an ambiguity symbol.
 template <typename NucleicAcid>
-bool isambiguous(NucleicAcid nt);
+bool is_ambiguous(NucleicAcid nt);
 
 // Test if `nt` represents a certainly known nucleotide.
 template <typename NucleicAcid>
-bool iscertain(NucleicAcid nt);
+bool is_certain(NucleicAcid nt);
 
 // Test if `nt` is a symbol representing a gap.
 template <typename NucleicAcid>
-bool isgap(NucleicAcid nt);
+bool is_gap(NucleicAcid nt);
 
-int popcount(unsigned char b);
+template <typename NucleicAcid>
+NucleicAcid complement(NucleicAcid nt);
+
+template <typename NucleicAcid>
+bool is_compatible(NucleicAcid x, NucleicAcid y);
 
 #endif
