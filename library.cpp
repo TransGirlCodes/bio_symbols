@@ -7,9 +7,13 @@ int count_ones(NucleicAcid nt){
     static_assert(is_nucleic_acid<NucleicAcid>::value, "Values are not nucleic acids");
     using UT = typename std::underlying_type<NucleicAcid>::type;
     auto b = static_cast<UT>(nt);
+#if __has_builtin(__builtin_popcount)
+    return __builtin_popcount(b);
+#else
     b = b - ((b >> 1) & 0x55);
     b = (b & 0x33) + ((b >> 2) & 0x33);
     return (((b + (b >> 4)) & 0x0F) * 0x01);
+#endif
 }
 
 template <typename NucleicAcid>
