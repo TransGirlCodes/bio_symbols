@@ -1,6 +1,5 @@
 #include "library.h"
-
-#include <iostream>
+#include <type_traits>
 
 template <typename NucleicAcid>
 int count_ones(NucleicAcid nt){
