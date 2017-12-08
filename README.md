@@ -1,4 +1,4 @@
-# bio_symbols
-A simple C++ shared library implementing biological symbol types.
+# biosymbols
+A simple header only C++ library implementing biological symbol types.
 
-**In development**
+Just download into your project and include the .h file!
